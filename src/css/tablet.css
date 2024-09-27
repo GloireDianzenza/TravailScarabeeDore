@@ -1,0 +1,19 @@
+@media screen and (max-width:768px) {
+    .HeaderBottom > .list-group{
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        justify-content: space-around;
+    }
+
+    #apropos{
+        order: 4;
+    }
+
+    #mainPart{
+        flex-direction: column-reverse;
+    }
+
+    .step{
+        flex-direction: column !important;
+    }
+}
