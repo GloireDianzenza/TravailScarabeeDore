@@ -84,7 +84,8 @@ input:valid{
 }
 
 h1{
-  font-size: 70px;
+  font-size: 75px;
+  padding: 10px;
 }
 h2{
   font-size: 40px !important;
@@ -126,6 +127,7 @@ header{
   left: 0;top: 0;
   width: 100% !important;
   z-index: 30 !important;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 30%);
 }
 
 main{
