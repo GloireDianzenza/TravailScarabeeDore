@@ -9,6 +9,20 @@ import GridImage from "./images/T_365456.jpg";
 import ApprocheImage from "./images/pexels-divinetechygirl-1181533.jpg";
 import HeadphoneImage from "./images/Helpdesk Office 3 1872x1053.jpg";
 
+function MeetingModalFunction(){
+  document.querySelector(".modal").classList.add("show-modal");
+}
+
+function RendezVousModal(){
+  return (
+    <div className='modal'>
+      <div className='modal-content'>
+        
+      </div>
+    </div>
+  )
+}
+
 function FooterComponent(){
   return (
     <footer>
@@ -113,7 +127,7 @@ function App() {
           <div className='left'>
             <h2>Plus tu touches le fond, et plus tu te relèves plus fort, tu es capable de déplacer des montagnes</h2>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste fugiat ipsa voluptate placeat aspernatur quam.</span>
-            <Button variant='secondary buttons' id='seanceBtn'>Réserver une séance</Button>
+            <Button variant='secondary buttons' id='seanceBtn' onClick={MeetingModalFunction}>Prendre rendez-vous</Button>
           </div>
           <div className='right'>
             <img src={PageImage} alt=''></img>
@@ -161,6 +175,7 @@ function App() {
             <ContactForm/>
           </div>
         </section>
+        <RendezVousModal/>
       </main>
       <FooterComponent/>
       <BootstrapJS/>

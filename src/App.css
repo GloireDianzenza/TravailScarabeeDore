@@ -396,3 +396,37 @@ footer button:hover{
 #formToggler.show::after{
   content: "\2193";
 }
+
+.show-modal{
+  display: block !important;
+  z-index: 1055 !important;
+  background-color: rgba(0, 0, 0, 30%);
+  position: relative;
+}
+
+.modal-content{
+  transition: all 2s ease !important;
+  min-width: 50vw !important;
+  min-height: 50vw !important;
+  position: absolute !important;
+  left: 0;
+  top: 0;
+  transform: translateY(-100%);
+  animation: reveal forwards linear 0.2s;
+}
+
+.show-modal .modal-content{
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+
+@keyframes reveal {
+  0%{
+    top: 0;
+    transform: translateY(-100%);
+  }
+  100%{
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+}
