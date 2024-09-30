@@ -113,7 +113,7 @@ function App() {
           <div className='left'>
             <h2>Plus tu touches le fond, et plus tu te relèves plus fort, tu es capable de déplacer des montagnes</h2>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste fugiat ipsa voluptate placeat aspernatur quam.</span>
-            <Button variant='secondary buttons'>Réserver une séance</Button>
+            <Button variant='secondary buttons' id='seanceBtn'>Réserver une séance</Button>
           </div>
           <div className='right'>
             <img src={PageImage} alt=''></img>
