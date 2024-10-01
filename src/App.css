@@ -407,12 +407,14 @@ footer button:hover{
 .modal-content{
   transition: all 2s ease !important;
   min-width: 50vw !important;
-  min-height: 50vw !important;
+  min-height: fit-content !important;
   position: absolute !important;
   left: 0;
   top: 0;
   transform: translateY(-100%);
   animation: reveal forwards linear 0.2s;
+
+  background-color: var(--contrast-1) !important;
 }
 
 .show-modal .modal-content{
@@ -429,4 +431,50 @@ footer button:hover{
     top: 50% !important;
     transform: translateY(-50%);
   }
+}
+
+.close-modal{
+  cursor: pointer;
+  width: 40px !important;
+  height: 40px;
+  position: absolute !important;
+  right: 0;
+  top: 0;
+  z-index: 100 !important;
+}
+
+.modal h2{
+  font-size: 27px !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.modal-content > *{
+  position: relative;
+}
+
+.meeting-form .btn-link{
+  text-align: left;
+  align-self: flex-start;
+  font-size: 15px !important;
+}
+.meeting-form .btn-link:active{
+  background-color: black !important;
+  color: yellow !important;
+}
+
+.meeting-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.meeting-form .btn-primary{
+  background-color: var(--contrast-2);
+  border: none;outline: none;
+}
+.meeting-form .btn-primary:hover,.meeting-form .btn-primary:active{
+  background-color: black;
+  border: none;outline: none;
+  color: yellow !important;
+  accent-color: black !important;
 }

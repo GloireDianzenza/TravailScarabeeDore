@@ -8,16 +8,48 @@ import PageImage from "./images/depositphotos_56121605-stock-photo-female-managi
 import GridImage from "./images/T_365456.jpg";
 import ApprocheImage from "./images/pexels-divinetechygirl-1181533.jpg";
 import HeadphoneImage from "./images/Helpdesk Office 3 1872x1053.jpg";
+import {Icon} from "./components/index.ts";
+
+function MeetingForm(){
+  return (
+    <Form className='meeting-form'>
+      <Form.Group controlId='nom2'>
+        <Form.Label>Nom</Form.Label>
+        <Form.Control type='text' placeholder='Nom...' required name='nom2'></Form.Control>
+      </Form.Group>
+      <Form.Group controlId='prenom'>
+        <Form.Label>Prénom</Form.Label>
+        <Form.Control type='text' placeholder='Prénom...' required name='prenom'></Form.Control>
+      </Form.Group>
+      <Form.Group controlId='mail2'>
+        <Form.Label>Adresse email</Form.Label>
+        <Form.Control type='email' placeholder='Adresse email...' required name='mail2'></Form.Control>
+      </Form.Group>
+      <Button type='button' variant='link'>Pas de compte ?</Button>
+      <Button type='submit' variant='primary'>Se connecter</Button>
+    </Form>
+  )
+}
 
 function MeetingModalFunction(){
   document.querySelector(".modal").classList.add("show-modal");
+}
+
+function CloseModalFunction(){
+  document.querySelector(".modal").classList.remove("show-modal");
 }
 
 function RendezVousModal(){
   return (
     <div className='modal'>
       <div className='modal-content'>
-        
+        <div className='close-modal' onClick={CloseModalFunction}>
+          <Icon name='bxs-x-circle' size='40px'></Icon>
+        </div>
+        <div>
+          <h2>Pour obtenir un rendez-vous, vous devez avoir un compte</h2>
+        </div>
+        <MeetingForm/>
       </div>
     </div>
   )
