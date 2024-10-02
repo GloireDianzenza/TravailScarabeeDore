@@ -27,13 +27,12 @@ const apiCalendar = new ApiCalendar(config);
 
 function MeetingSubmit(event){
   event.preventDefault();
-  apiCalendar.handleSignoutClick();
+  apiCalendar.handleAuthClick();
 }
 
-const getEvents = (id,key) =>{
-  console.log(id,key);
+const getEvents = (id,key,docs) =>{
   function initiate(){
-    gapi.client.init({apiKey:key}).then(()=>{
+    gapi.client.init({apiKey:key,discoveryDocs:docs}).then(()=>{
       console.log("success")
     }).catch(error=>{
       console.log("error");
@@ -176,10 +175,13 @@ function HeaderList(){
 }
 
 function App() {
-  const calendarID = "",apiKey = "AIzaSyALuiSB6MSQsCdHLC75R5w-ZIi34QFX88E",accessToken = "";
+  const calendarID = "gloiredianzenza5@gmail.com",apiKey = "AIzaSyALuiSB6MSQsCdHLC75R5w-ZIi34QFX88E",accessToken = "",
+  discoveryDocs = [
+    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+  ];
 
   useEffect(()=>{
-    getEvents(calendarID,apiKey);
+    getEvents(calendarID,apiKey,discoveryDocs);
   })
 
   return (
