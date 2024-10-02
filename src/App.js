@@ -20,25 +20,17 @@ const config = {
   scope: "https://www.googleapis.com/auth/calendar",
   discoveryDocs: [
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-  ],
+  ],accessToken:"ya29.a0AcM612y20owQY8Hd1_cKSZ1Yy9B4scNEgKmllacRSRJN2vE_EkVFKWUHI47mijD5wiT3KeXsQQCJTDQieZbHGQyplshSmMI1KJm2wBTlnYSUnVMsoxVzoIXUzJENROABpjqlMK-L45qV5xbLpJ4S22v6G1OPRdNi_NKoCnmxaCgYKAXASARASFQHGX2Mi--igxmxWeaRfBngYtzZWKQ0175",
+  calendarId:"gloiredianzenza5@gmail.com"
 };
-
 const apiCalendar = new ApiCalendar(config);
 
 function MeetingSubmit(event){
   event.preventDefault();
   apiCalendar.handleAuthClick();
-}
-
-const getEvents = (id,key,docs) =>{
   function initiate(){
-    gapi.client.init({apiKey:key,discoveryDocs:docs}).then(()=>{
-      console.log("success")
-    }).catch(error=>{
-      console.log("error");
-    })
+    
   }
-
   gapi.load("client",initiate);
 }
 
@@ -175,13 +167,9 @@ function HeaderList(){
 }
 
 function App() {
-  const calendarID = "gloiredianzenza5@gmail.com",apiKey = "AIzaSyALuiSB6MSQsCdHLC75R5w-ZIi34QFX88E",accessToken = "",
-  discoveryDocs = [
-    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-  ];
 
   useEffect(()=>{
-    getEvents(calendarID,apiKey,discoveryDocs);
+    
   })
 
   return (
