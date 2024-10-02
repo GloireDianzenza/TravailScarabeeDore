@@ -9,29 +9,10 @@ import GridImage from "./images/T_365456.jpg";
 import ApprocheImage from "./images/pexels-divinetechygirl-1181533.jpg";
 import HeadphoneImage from "./images/Helpdesk Office 3 1872x1053.jpg";
 import {Icon} from "./components/index.ts";
-
-import ApiCalendar from "react-google-calendar-api";
-import {gapi} from "gapi-script";
 import { useEffect } from 'react';
-
-const config = {
-  clientId: "965666486369-9deuckjj3h7g4vr0f73mrk1vfv0trd4e.apps.googleusercontent.com",
-  apiKey: "AIzaSyALuiSB6MSQsCdHLC75R5w-ZIi34QFX88E",
-  scope: "https://www.googleapis.com/auth/calendar",
-  discoveryDocs: [
-    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-  ],accessToken:"ya29.a0AcM612y20owQY8Hd1_cKSZ1Yy9B4scNEgKmllacRSRJN2vE_EkVFKWUHI47mijD5wiT3KeXsQQCJTDQieZbHGQyplshSmMI1KJm2wBTlnYSUnVMsoxVzoIXUzJENROABpjqlMK-L45qV5xbLpJ4S22v6G1OPRdNi_NKoCnmxaCgYKAXASARASFQHGX2Mi--igxmxWeaRfBngYtzZWKQ0175",
-  calendarId:"gloiredianzenza5@gmail.com"
-};
-const apiCalendar = new ApiCalendar(config);
 
 function MeetingSubmit(event){
   event.preventDefault();
-  apiCalendar.handleAuthClick();
-  function initiate(){
-    
-  }
-  gapi.load("client",initiate);
 }
 
 function MeetingForm(){
