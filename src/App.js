@@ -10,9 +10,42 @@ import ApprocheImage from "./images/pexels-divinetechygirl-1181533.jpg";
 import HeadphoneImage from "./images/Helpdesk Office 3 1872x1053.jpg";
 import {Icon} from "./components/index.ts";
 
+import ApiCalendar from "react-google-calendar-api";
+import {gapi} from "gapi-script";
+import { useEffect } from 'react';
+
+const config = {
+  clientId: "965666486369-9deuckjj3h7g4vr0f73mrk1vfv0trd4e.apps.googleusercontent.com",
+  apiKey: "AIzaSyALuiSB6MSQsCdHLC75R5w-ZIi34QFX88E",
+  scope: "https://www.googleapis.com/auth/calendar",
+  discoveryDocs: [
+    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+  ],
+};
+
+const apiCalendar = new ApiCalendar(config);
+
+function MeetingSubmit(event){
+  event.preventDefault();
+  apiCalendar.handleSignoutClick();
+}
+
+const getEvents = (id,key) =>{
+  console.log(id,key);
+  function initiate(){
+    gapi.client.init({apiKey:key}).then(()=>{
+      console.log("success")
+    }).catch(error=>{
+      console.log("error");
+    })
+  }
+
+  gapi.load("client",initiate);
+}
+
 function MeetingForm(){
   return (
-    <Form className='meeting-form'>
+    <Form className='meeting-form' onSubmit={MeetingSubmit}>
       <Form.Group controlId='nom2'>
         <Form.Label>Nom</Form.Label>
         <Form.Control type='text' placeholder='Nom...' required name='nom2'></Form.Control>
@@ -143,6 +176,12 @@ function HeaderList(){
 }
 
 function App() {
+  const calendarID = "",apiKey = "AIzaSyALuiSB6MSQsCdHLC75R5w-ZIi34QFX88E",accessToken = "";
+
+  useEffect(()=>{
+    getEvents(calendarID,apiKey);
+  })
+
   return (
     <div className="App">
       <div id='top'></div>
