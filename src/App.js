@@ -152,8 +152,6 @@ function HeaderList(){
 
 function App() {
 
-  console.log(process.env.REACT_APP_TOKEN);
-
   return (
     <div className="App">
       <div id='top'></div>
