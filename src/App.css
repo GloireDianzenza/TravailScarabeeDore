@@ -477,7 +477,7 @@ footer button:hover{
   border: none;outline: none;
 }
 .meeting-form .btn-primary:hover,.meeting-form .btn-primary:active{
-  background-color: black;
+  background-color: black !important;
   border: none;outline: none;
   color: yellow !important;
   accent-color: black !important;
