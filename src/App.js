@@ -239,9 +239,7 @@ function HeaderList(){
 
 function App() {
   useEffect(()=>{
-    console.log(sessionStorage);
     sessionStorage.clear();
-    console.log(sessionStorage);
   },[])
 
   return (
