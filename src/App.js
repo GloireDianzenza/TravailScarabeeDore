@@ -9,29 +9,116 @@ import GridImage from "./images/T_365456.jpg";
 import ApprocheImage from "./images/pexels-divinetechygirl-1181533.jpg";
 import HeadphoneImage from "./images/Helpdesk Office 3 1872x1053.jpg";
 import {Icon} from "./components/index.ts";
+import { useEffect, useState } from 'react';
 
-function MeetingSubmit(event){
-  event.preventDefault();
+import { jwtDecode } from 'jwt-decode';
+
+/**
+ * 
+ * @param {string} email 
+ * @returns {RegExpMatchArray | null}
+ */
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+/**
+ * 
+ * @param {string} token 
+ * @returns 
+ */
+const tokenExpired = (token) =>{
+  if(!token)return true;
+  try{
+    const decodeTk = jwtDecode(token);
+    const currentTime = Date.now() / 1000;
+    return decodeTk.exp < currentTime;
+  }catch(error){
+    console.error(error);
+    return true;
+  }
 }
 
+
 function MeetingForm(){
+
+  const [lastName,setLastName] = useState("");
+  const [firstName,setFirstName] = useState("");
+  const [email,setEmail] = useState("");
+  const [phone,setPhone] = useState("");
+
+  /**
+   * 
+   * @param {Event} evt 
+   */
+  const lastNameChange = (evt) => {
+    setLastName(evt.target.value)
+  }
+  
+  const firstNameChange = (evt) => {
+    setFirstName(evt.target.value)
+  }
+  
+  const emailChange = (evt) => {
+    if(validateEmail(evt.target.value) !== null){
+      setEmail(evt.target.value)
+    }
+  }
+  
+  const phoneChange = (evt) => {
+    if([10,12].includes(evt.target.value.length)){
+      setPhone(evt.target.value)
+    }
+  }
+
+  function MeetingSubmit(event){
+    event.preventDefault();
+    if(lastName.trim() !== "" && firstName.trim() !== "" && email.trim() !== "" && phone.trim() !== ""){
+        const user = {nom:lastName,prenom:firstName,email:email,telephone:phone};
+        try{
+          fetch("http://localhost:8080/api/users/user/login",{
+            method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(user)
+          })
+          .then(response=>response.json())
+          .then(async data=>{
+              let currentUser = await fetch("http://localhost:8080/api/users/"+data.id);
+              currentUser = await currentUser.json();
+
+              let request = await fetch("http://localhost:8080/api/users",{
+                method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(currentUser)
+              });
+              const tokenObj = await request.json();
+              sessionStorage.setItem("user",JSON.stringify(tokenObj.user));
+              sessionStorage.setItem("token",tokenObj.token);
+              console.log(sessionStorage);
+          })
+        }catch(error){
+          console.error(error);
+        }
+    }
+  }
+
   return (
     <Form className='meeting-form' onSubmit={MeetingSubmit}>
       <Form.Group controlId='nom2'>
         <Form.Label>Nom</Form.Label>
-        <Form.Control type='text' placeholder='Nom...' required name='nom2'></Form.Control>
+        <Form.Control type='text' placeholder='Nom...' required name='nom2' onChange={lastNameChange}></Form.Control>
       </Form.Group>
       <Form.Group controlId='prenom'>
         <Form.Label>Prénom</Form.Label>
-        <Form.Control type='text' placeholder='Prénom...' required name='prenom'></Form.Control>
+        <Form.Control type='text' placeholder='Prénom...' required name='prenom' onChange={firstNameChange}></Form.Control>
       </Form.Group>
       <Form.Group controlId='mail2'>
         <Form.Label>Adresse email</Form.Label>
-        <Form.Control type='email' placeholder='Adresse email...' required name='mail2'></Form.Control>
+        <Form.Control type='email' placeholder='Adresse email...' required name='mail2' onChange={emailChange}></Form.Control>
       </Form.Group>
       <Form.Group controlId='phone'>
         <Form.Label>Téléphone</Form.Label>
-        <Form.Control type='tel' placeholder='Numéro...' name='mail2' minLength={0} maxLength={12}></Form.Control>
+        <Form.Control type='tel' placeholder='Numéro...' name='mail2' minLength={0} maxLength={12} onChange={phoneChange}></Form.Control>
       </Form.Group>
       <Button type='button' variant='link'>Pas de compte ?</Button>
       <Button type='submit' variant='primary'>Se connecter</Button>
@@ -151,6 +238,11 @@ function HeaderList(){
 }
 
 function App() {
+  useEffect(()=>{
+    console.log(sessionStorage);
+    sessionStorage.clear();
+    console.log(sessionStorage);
+  },[])
 
   return (
     <div className="App">
