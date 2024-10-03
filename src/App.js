@@ -9,7 +9,6 @@ import GridImage from "./images/T_365456.jpg";
 import ApprocheImage from "./images/pexels-divinetechygirl-1181533.jpg";
 import HeadphoneImage from "./images/Helpdesk Office 3 1872x1053.jpg";
 import {Icon} from "./components/index.ts";
-import { useEffect } from 'react';
 
 function MeetingSubmit(event){
   event.preventDefault();
@@ -29,6 +28,10 @@ function MeetingForm(){
       <Form.Group controlId='mail2'>
         <Form.Label>Adresse email</Form.Label>
         <Form.Control type='email' placeholder='Adresse email...' required name='mail2'></Form.Control>
+      </Form.Group>
+      <Form.Group controlId='phone'>
+        <Form.Label>Téléphone</Form.Label>
+        <Form.Control type='tel' placeholder='Numéro...' name='mail2' minLength={0} maxLength={12}></Form.Control>
       </Form.Group>
       <Button type='button' variant='link'>Pas de compte ?</Button>
       <Button type='submit' variant='primary'>Se connecter</Button>
@@ -149,9 +152,7 @@ function HeaderList(){
 
 function App() {
 
-  useEffect(()=>{
-    
-  })
+  console.log(process.env.REACT_APP_TOKEN);
 
   return (
     <div className="App">

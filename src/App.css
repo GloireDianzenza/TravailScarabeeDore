@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/bintar');
 
 .App {
   width: 100% !important;
@@ -19,7 +20,8 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: Helvetica, sans-serif !important;
+  /* font-family: Helvetica, sans-serif !important; */
+  font-family: 'Bintar', sans-serif;
   list-style: none;
   text-decoration: none;
   z-index: 0 !important;
@@ -73,6 +75,7 @@ input:invalid{
 }
 input:valid{
   background-color: var(--correct) !important;
+  accent-color: var(--correct) !important;
 }
 
 .buttons{
@@ -101,13 +104,13 @@ h3{
 }
 
 label,input{
-  font-size: 1.5rem;
+  font-size: 0.825rem;
 }
 label{
   cursor: pointer !important;
 }
 
-form{
+form,form *{
   font-family: Arial, sans-serif !important;
   border-radius: 7px;
 }
@@ -186,9 +189,10 @@ section#mainPart{
   background-color: var(--contrast-1);
   user-select: none;
   pointer-events: none;
-  transform: translate(0,-100%);
+  transform: translate(-7%,-100%);
   z-index: -10 !important;
   opacity: 0;
+  width: fit-content !important;
 
   border-radius: 0;
 }
@@ -196,7 +200,7 @@ section#mainPart{
 .list-group-item:has(.submenu):hover .submenu{
   user-select: all;
   pointer-events: all;
-  transform: translate(0,1%);
+  transform: translate(-7%,1%) !important;
   opacity: 1;
 }
 
@@ -209,7 +213,7 @@ section#mainPart{
   cursor: pointer;
 }
 .list-group-item:hover > button,.list-group-item:hover > a{
-  color: white !important;
+  color: rgb(101, 101, 1) !important;
 }
 
 .HeaderBottom > .list-group > .list-group-item{
@@ -305,7 +309,7 @@ main button{
 #formManager button{
   font-size: 22px;
   font-weight: bold;
-  width: 100%;
+  width: 60%;
 }
 
 form > div{
@@ -330,14 +334,14 @@ form{
 }
 
 #formManager > div{
-  width: 100% !important;
+  width: 60% !important;
   overflow: hidden;
   position: relative;
   height: 800px;
 }
 
 form input{
-  width: 40% !important;
+  width: 65% !important;
 }
 
 #msgGroup{
@@ -353,15 +357,16 @@ form textarea{
 form button{
   max-width: fit-content !important;
   padding: 15px;
-  font-size: 40px !important;
+  font-size: 1.75rem !important;
 }
 
 form > div{
   width: 100% !important;
 }
 form > div:not(#msgGroup){
-  justify-content: center;
+  justify-content: space-between;
   gap: 30px;
+  padding: 0 25%;
 }
 
 .hidden-form{
@@ -391,7 +396,7 @@ footer button:hover{
 #formToggler::after{
   content: "\2192";
   position: absolute;
-  right: 30%;
+  right: 11%;
 }
 #formToggler.show::after{
   content: "\2193";
@@ -477,4 +482,10 @@ footer button:hover{
   border: none;outline: none;
   color: yellow !important;
   accent-color: black !important;
+}
+
+#seanceBtn{
+  width: fit-content !important;
+  align-self: center;
+  font-size: 1.5rem;
 }
