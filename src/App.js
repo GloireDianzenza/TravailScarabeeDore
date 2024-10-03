@@ -31,7 +31,7 @@ const validateEmail = (email) => {
  * @param {string} token 
  * @returns 
  */
-const tokenExpired = (token) =>{
+export const tokenExpired = (token) =>{
   if(!token)return true;
   try{
     const decodeTk = jwtDecode(token);
