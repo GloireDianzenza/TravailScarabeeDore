@@ -75,7 +75,6 @@ input:invalid{
 }
 input:valid{
   background-color: var(--correct) !important;
-  accent-color: var(--correct) !important;
 }
 
 .buttons{
