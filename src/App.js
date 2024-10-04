@@ -151,7 +151,7 @@ function MeetingForm(){
       </Form.Group>
       <Form.Group controlId='phone'>
         <Form.Label>Téléphone</Form.Label>
-        <Form.Control type='tel' placeholder='Numéro...' name='mail2' minLength={0} maxLength={12} onChange={phoneChange}></Form.Control>
+        <Form.Control type='tel' placeholder='Numéro...' name='mail2' minLength={10} maxLength={12} onChange={phoneChange}></Form.Control>
       </Form.Group>
       <Button type='button' variant='link'>Pas de compte ?</Button>
       <Button type='submit' variant='primary'>Se connecter</Button>

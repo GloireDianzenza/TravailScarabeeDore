@@ -115,7 +115,7 @@ form,form *{
 }
 
 input,input:placeholder-shown{
-  border-radius: 15px;
+  border-radius: 15px !important;
   background-color: var(--contrast-2) !important;
 }
 
