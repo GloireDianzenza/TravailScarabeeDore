@@ -114,10 +114,10 @@ function MeetingForm(){
           })
           .then(response=>response.json())
           .then(async data=>{
-              let currentUser = await fetch("http://localhost:8080/api/users/"+data.id);
-              currentUser = await currentUser.json();
+              let request = await fetch("http://localhost:8080/api/users/"+data.id);
+              const currentUser = await request.json();
 
-              let request = await fetch("http://localhost:8080/api/users",{
+              request = await fetch("http://localhost:8080/api/users",{
                 method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(currentUser)
               });
               const tokenObj = await request.json();
@@ -127,6 +127,7 @@ function MeetingForm(){
                 sessionStorage.setItem("user",null);
                 sessionStorage.setItem("token","");
               }
+              console.log(sessionStorage);
           })
         }catch(error){
           console.error(error);
