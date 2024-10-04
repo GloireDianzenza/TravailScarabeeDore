@@ -43,6 +43,34 @@ export const tokenExpired = (token) =>{
   }
 }
 
+/**
+ * 
+ * @param  {...Object} objects 
+ */
+export const objectsEqual = (...objects) =>{
+    for(const obj1 of objects){
+      for(const obj2 of objects){
+        const keys = Object.keys(obj1);
+        for(const k of keys){
+          if(!obj1[k] || !obj2[k] || obj1[k] != obj2[k])return false;
+        }
+      }
+    }
+    return true;
+}
+
+/**
+ * 
+ * @param {string} token 
+ * @param {Object} user 
+ */
+export const correctUserToken = (token,user)=>{
+      if(tokenExpired(token))return false;
+      if(!user || !user.id)return false;
+      if(!sessionStorage.getItem("token") || !sessionStorage.getItem("user"))return false;
+      return token === sessionStorage.getItem("token") && objectsEqual(user,JSON.parse(sessionStorage.getItem("user")));
+}
+
 
 function MeetingForm(){
 
