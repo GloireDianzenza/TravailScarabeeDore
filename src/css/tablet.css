@@ -17,3 +17,10 @@
         flex-direction: column !important;
     }
 }
+
+@media screen and (max-width:700px) {
+    .close-modal{
+        bottom: 0 !important;
+        top: auto;
+    }
+}
