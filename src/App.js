@@ -50,6 +50,7 @@ export const tokenExpired = (token) =>{
 export const objectsEqual = (...objects) =>{
     for(const obj1 of objects){
       for(const obj2 of objects){
+        if(obj1 === obj2)continue;
         const keys = Object.keys(obj1);
         for(const k of keys){
           if(!obj1[k] || !obj2[k] || obj1[k] != obj2[k])return false;
