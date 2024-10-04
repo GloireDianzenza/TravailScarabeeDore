@@ -114,7 +114,7 @@ form,form *{
   border-radius: 7px;
 }
 
-input{
+input,input:placeholder-shown{
   border-radius: 15px;
   background-color: var(--contrast-2) !important;
 }
