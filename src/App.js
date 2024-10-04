@@ -32,7 +32,7 @@ const validateEmail = (email) => {
  * @returns 
  */
 export const tokenExpired = (token) =>{
-  if(!token)return true;
+  if(!token || token.trim() === "")return true;
   try{
     const decodeTk = jwtDecode(token);
     const currentTime = Date.now() / 1000;
@@ -94,7 +94,10 @@ function MeetingForm(){
               const tokenObj = await request.json();
               sessionStorage.setItem("user",JSON.stringify(tokenObj.user));
               sessionStorage.setItem("token",tokenObj.token);
-              console.log(sessionStorage);
+              if(!tokenObj.user || !tokenObj.token){
+                sessionStorage.setItem("user",null);
+                sessionStorage.setItem("token","");
+              }
           })
         }catch(error){
           console.error(error);
