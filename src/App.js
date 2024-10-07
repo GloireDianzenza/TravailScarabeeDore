@@ -74,7 +74,14 @@ export const correctUserToken = (token,user)=>{
 
 function SocialDiv(){
   return (
-    <div className='socials'></div>
+    <section className='socials'>
+      <a href='https://www.facebook.com/scarabee.dore.3' id='facebook'>
+        <i class='bx bxl-facebook-circle'></i>
+      </a>
+      <a href='https://www.facebook.com/scarabee.dore.3' id='instagram'>
+        <i class='bx bxl-instagram' ></i>
+      </a>
+    </section>
   )
 }
 
