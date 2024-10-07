@@ -72,6 +72,12 @@ export const correctUserToken = (token,user)=>{
       return token === sessionStorage.getItem("token") && objectsEqual(user,JSON.parse(sessionStorage.getItem("user")));
 }
 
+function SocialDiv(){
+  return (
+    <div className='socials'></div>
+  )
+}
+
 
 function MeetingForm(){
 
@@ -340,7 +346,7 @@ function App() {
           </div>
         </section>
         <RendezVousModal/>
-        <div className='socials'>Socials</div>
+        <SocialDiv/>
       </main>
       <FooterComponent/>
       <BootstrapJS/>
