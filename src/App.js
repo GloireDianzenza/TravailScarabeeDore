@@ -289,7 +289,7 @@ function App() {
       <main>
         <section id='mainPart'>
           <div className='left'>
-            <h2>Plus tu touches le fond, et plus tu te relèves plus fort, tu es capable de déplacer des montagnes</h2>
+            <h2>« Accepter ce n’est pas se résigner, mais rien ne vous fera perdre plus d’énergie que de résister face à une situation que vous ne pouvez pas changer. » Le Dalaï Lama</h2>
             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste fugiat ipsa voluptate placeat aspernatur quam.</span>
             <Button variant='secondary buttons' id='seanceBtn' onClick={MeetingModalFunction}>Prendre rendez-vous</Button>
           </div>
@@ -340,6 +340,7 @@ function App() {
           </div>
         </section>
         <RendezVousModal/>
+        <div className='socials'>Socials</div>
       </main>
       <FooterComponent/>
       <BootstrapJS/>

@@ -168,6 +168,15 @@ section#mainPart{
   justify-content: space-around;
 }
 
+.HeaderTop{
+  position: relative;
+  background-image: url("https://scarabeedore.wordpress.com/wp-content/uploads/2022/11/fotoram.io-1.jpg") !important;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(100%) saturate(100%) invert(75%) sepia(99%) saturate(1442%) hue-rotate(0deg) brightness(104%) contrast(103%);
+}
+
 .HeaderBottom > .list-group{
   display: flex;
   flex-direction: row !important;
@@ -497,4 +506,8 @@ footer button:hover{
   width: fit-content !important;
   align-self: center;
   font-size: 1.5rem;
+}
+
+.socials{
+  margin-bottom: 15px;
 }
