@@ -518,6 +518,9 @@ footer button:hover{
 #instagram{
   background-color: #f00075;
 }
+#linkedin{
+  background-color: #0d66c2;
+}
 
 .socials a{
   display: flex;
@@ -533,6 +536,6 @@ footer button:hover{
   transform: scale(1.25);
 }
 
-#facebook i{
+.socials a i{
   color: white;
 }

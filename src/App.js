@@ -76,10 +76,16 @@ function SocialDiv(){
   return (
     <section className='socials'>
       <a href='https://www.facebook.com/scarabee.dore.3' id='facebook'>
-        <i class='bx bxl-facebook-circle'></i>
+        <i className='bx bxl-facebook-circle'></i>
       </a>
-      <a href='https://www.facebook.com/scarabee.dore.3' id='instagram'>
-        <i class='bx bxl-instagram' ></i>
+      <a href='https://www.instagram.com/scarabee.dore.21/' id='instagram'>
+        <i className='bx bxl-instagram' ></i>
+      </a>
+      <a href='https://www.linkedin.com/in/sandra-duarte-732090256/?original_referer=' id='linkedin'>
+        <i className='bx bxl-linkedin-square' ></i>
+      </a>
+      <a href='https://www.youtube.com/channel/UCilCmtLsTzdL6qkPMN2G2uA' id='youtube'>
+        <i className='bx bxl-youtube' ></i>
       </a>
     </section>
   )
