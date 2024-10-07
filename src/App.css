@@ -510,6 +510,8 @@ footer button:hover{
 
 .socials{
   margin-bottom: 15px;
+  justify-content: center;
+  gap: 15px;
 }
 
 #facebook{
@@ -521,14 +523,27 @@ footer button:hover{
 #linkedin{
   background-color: #0d66c2;
 }
+#youtube{
+  background-color: red;
+}
+#twitter{
+  background-color: #1da1f2;
+}
+#tiktok{
+  background-color: black;
+}
+#mailLink,.mailLink{
+  background-color: #f0f0f0;
+  color: #444 !important;
+}
 
 .socials a{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
+  font-size: 30px;
   border-radius: 50%;
-  padding: 10px;
+  padding: 7px;
   text-decoration: none !important;
 }
 
@@ -538,4 +553,8 @@ footer button:hover{
 
 .socials a i{
   color: white;
+}
+
+.socials #mailLink i,.socials .mailLink i{
+  color: #444;
 }

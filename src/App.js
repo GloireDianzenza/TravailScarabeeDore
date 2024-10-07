@@ -26,6 +26,40 @@ const validateEmail = (email) => {
     );
 };
 
+function contactFunc(e){
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const entries = Object.fromEntries(formData.entries());
+  let futureLink = "mailto:scarabee.dore21@gmail.com"
+  let set = 0;
+  if(entries.cc && set == 0){
+    futureLink += "?cc=" + entries.cc;
+    set++;
+  }
+  else if(entries.cc && set > 0){
+    futureLink += "&cc=" + entries.cc;
+    set++;
+  }
+  if(entries.subject && set == 0){
+    futureLink += "?subject=" + entries.subject;
+    set++;
+  }
+  else if(entries.subject && set > 0){
+    futureLink += "&subject=" + entries.subject;
+    set++;
+  }
+  if(entries.body && set == 0){
+    futureLink += "?body=" + entries.body;
+    set++;
+  }
+  else if(entries.body && set > 0){
+    futureLink += "&body=" + entries.body;
+    set++;
+  }
+  window.location = futureLink;
+}
+
 /**
  * 
  * @param {string} token 
@@ -86,6 +120,18 @@ function SocialDiv(){
       </a>
       <a href='https://www.youtube.com/channel/UCilCmtLsTzdL6qkPMN2G2uA' id='youtube'>
         <i className='bx bxl-youtube' ></i>
+      </a>
+      <a href='https://twitter.com/scarabeedore22' id='twitter'>
+        <i className='bx bxl-twitter' ></i>
+      </a>
+      <a href='https://www.tiktok.com/foryou?is_copy_url=1&is_from_webapp=v1' id='tiktok'>
+        <i className='bx bxl-tiktok' ></i>
+      </a>
+      <a href='mailto:scarabee.dore21@gmail.com' id='mailLink' className='mailLink'>
+        <i className='bx bx-envelope' ></i>
+      </a>
+      <a href='tel:0760231984' className='mailLink'>
+        <i className='bx bx-phone' ></i>
       </a>
     </section>
   )
@@ -233,22 +279,22 @@ function ToggleForm(){
 
 function ContactForm(){
   return (
-    <Form>
+    <Form method='POST' action='mailto:scarabee.dore21@gmail.com' encType='text/plain' onSubmit={contactFunc}>
       <Form.Group controlId='nom'>
         <Form.Label>Nom</Form.Label>
         <Form.Control type='text' placeholder='Insérer nom...' required name='nom'></Form.Control>
       </Form.Group>
       <Form.Group controlId='mail'>
         <Form.Label>Adresse email</Form.Label>
-        <Form.Control type='email' placeholder='Insérer email...' required name='mail'></Form.Control>
+        <Form.Control type='email' placeholder='Insérer email...' required name='cc'></Form.Control>
       </Form.Group>
       <Form.Group controlId='sujet'>
         <Form.Label>Sujet</Form.Label>
-        <Form.Control type='text' placeholder='Définir sujet...' required name='sujet'></Form.Control>
+        <Form.Control type='text' placeholder='Définir sujet...' required name='subject'></Form.Control>
       </Form.Group>
       <Form.Group controlId='message' id='msgGroup'>
         <Form.Label>Message</Form.Label>
-        <Form.Control as={"textarea"} rows={8} placeholder='...' required name='message'></Form.Control>
+        <Form.Control as={"textarea"} rows={8} placeholder='...' required name='body'></Form.Control>
       </Form.Group>
       <Button type='submit' variant='primary' className='buttons'>Envoyer</Button>
     </Form>
