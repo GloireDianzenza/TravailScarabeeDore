@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const {sequelize,DataTypes} = require("./init");
+const {sequelize,sequelize2,DataTypes} = require("./init");
 const userRoute = require("./routes/user.route");
 
 app.use((req,res,next)=>{
@@ -15,6 +15,7 @@ app.use("/api/users",userRoute);
 async function connect(){
     try {
         await sequelize.authenticate();
+        await sequelize2.authenticate();
         console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
@@ -22,5 +23,6 @@ async function connect(){
 }
 connect()
 sequelize.sync();
+sequelize2.sync();
 
 module.exports = app;
