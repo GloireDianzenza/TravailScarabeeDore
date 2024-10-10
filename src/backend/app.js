@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const {sequelize,sequelize2,DataTypes} = require("./init");
 const userRoute = require("./routes/user.route");
+const calendarRoute = require("./routes/calendar.route");
 
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -11,6 +12,7 @@ app.use((req,res,next)=>{
 });
 app.use(express.json());
 app.use("/api/users",userRoute);
+app.use("/api/calendars",calendarRoute);
 
 async function connect(){
     try {
