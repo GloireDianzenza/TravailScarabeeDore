@@ -33,7 +33,7 @@ function contactFunc(e){
   const entries = Object.fromEntries(formData.entries());
   let futureLink = "mailto:scarabee.dore21@gmail.com"
   let set = 0;
-  if(entries.cc && set == 0){
+  if(entries.cc && set === 0){
     futureLink += "?cc=" + entries.cc;
     set++;
   }
@@ -41,7 +41,7 @@ function contactFunc(e){
     futureLink += "&cc=" + entries.cc;
     set++;
   }
-  if(entries.subject && set == 0){
+  if(entries.subject && set === 0){
     futureLink += "?subject=" + entries.subject;
     set++;
   }
@@ -49,7 +49,7 @@ function contactFunc(e){
     futureLink += "&subject=" + entries.subject;
     set++;
   }
-  if(entries.body && set == 0){
+  if(entries.body && set === 0){
     futureLink += "?body=" + entries.body;
     set++;
   }
@@ -87,7 +87,9 @@ export const objectsEqual = (...objects) =>{
         if(obj1 === obj2)continue;
         const keys = Object.keys(obj1);
         for(const k of keys){
-          if(!obj1[k] || !obj2[k] || obj1[k] != obj2[k])return false;
+          if((!obj1[k] && obj1[k] !== 0 && obj1[k] !== "") || (!obj2[k] && obj2[k] !== 0 && obj2[k] !== "") || obj1[k] != obj2[k] || obj1[k] !== obj2[k]){
+            return false;
+          }
         }
       }
     }
@@ -193,6 +195,7 @@ function MeetingForm(){
                 sessionStorage.setItem("token","");
               }
               console.log(sessionStorage);
+              console.log(correctUserToken(tokenObj.token,tokenObj.user));
           })
         }catch(error){
           console.error(error);
