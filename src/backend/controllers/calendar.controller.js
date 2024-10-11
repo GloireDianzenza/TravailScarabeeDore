@@ -1,4 +1,3 @@
-const { TokenExpiredError } = require("jsonwebtoken");
 const Agenda = require("../models/calendar.model");
 
 async function getAllAgendas(req,res,next){
