@@ -24,3 +24,13 @@
         top: auto;
     }
 }
+@media screen and (max-width:500px) {
+    .socials a{
+        font-size: 70%;
+    }
+}
+@media screen and (max-width:400px) {
+    .socials a{
+        font-size: 40%;
+    }
+}
